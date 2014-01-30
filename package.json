@@ -1,19 +1,22 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "name": "HNReact",
+  "version": "0.1.0",
+  "description": "Hacker News Reader built with React, Backbone, and Bootstrap",
   "keywords": [
-    "OpenShift",
-    "Node.js",
-    "application",
-    "openshift"
+    "HackerNews",
+    "YCombinator",
+    "React",
+    "Backbone",
+    "Bootstrap",
+    "Node",
+    "Express"
   ],
   "author": {
-    "name": "OpenShift",
-    "email": "ramr@example.org",
-    "url": "http://www.openshift.com/"
+    "name": "Taggart Bowen-Gaddy",
+    "email": "taggartbg@gmail.com",
+    "url": "https://twitter.com/taggartbg"
   },
-  "homepage": "http://www.openshift.com/",
+  "homepage": "https://twitter.com/taggartbg",
   "repository": {
     "type": "git",
     "url": "https://github.com/openshift/origin-server"
