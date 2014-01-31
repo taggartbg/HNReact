@@ -1,3 +1,157 @@
 .title {
 	font-size: 1.5em;
 }
+
+.header {
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+	background-color: rgb(35, 40, 60);
+	font-size: 2em;
+	font-weight: bold;
+	color: orange;
+	padding: 0 25px;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+}
+
+.header .link {
+	font-size:1.75em;
+	float: right;
+
+}
+
+.list-view {
+	height: 100%;
+	width: 50%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding-top: 100px;
+	overflow-y: scroll;
+}
+
+.list-item {
+	height: 110px;
+	width: 100%;
+	position: relative;
+	padding: 20px;
+	background-color: #EEE3D1;
+	cursor: pointer;
+}
+.list-item:nth-child(even) {
+	background-color: #EED4B2;
+}
+.list-item:hover {
+	-webkit-box-shadow: inset 0 0 10px orange; 
+	-moz-box-shadow: inset 0 0 10px orange; 
+	box-shadow: inset 0 0 10px orange;
+	opacity: .9;
+}
+
+.list-item .score {
+	float: left;
+	height: 100%;
+	width: 20px;
+	margin-right: 20px;
+	text-align: center;
+}
+.list-item .score div {
+	line-height: 30px;
+}
+.list-item .score .glyphicon:hover {
+	color: white;
+}
+.list-item .score .glyphicon-chevron-up {
+	padding-left: 3px;
+}
+.list-item .title {
+	font-size: 1.5em;
+	font-weight: bold;
+	width: auto;
+}
+
+.list-item .comments {
+	float: right;
+	height: 100%;
+	width: 75px;
+	margin-left: 20px;
+	text-align: center;
+}
+.list-item .comments .comment-count {
+	font-size:2em;
+}
+
+.list-item .title {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.list-item .base-domain {
+	color: rgba(0,0,0,.4);
+}
+
+body {
+  background: #222;
+}
+
+.loading {
+  text-align: center;
+  width: 100px;
+  height: 50px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.loading div {
+  border-radius:50%;
+  height:10px; 
+  width:10px;
+  display: inline-block;
+  box-sizing: border-box;
+  background: #0ea6fd;
+}
+.loading div:nth-of-type(4) {
+  -webkit-animation:flash 0.8s 0.1s ease-in-out infinite;
+  animation:flash 0.8s 0.1s ease-in-out infinite;
+}
+.loading div:nth-of-type(3) {
+  -webkit-animation:flash 0.8s ease-in-out infinite;
+  animation:flash 0.8s ease-in-out infinite;
+}
+.loading div:nth-of-type(2) {
+  -webkit-animation:flash 0.8s -0.1s ease-in-out infinite;
+  animation:flash 0.8s -0.1s ease-in-out infinite;
+}
+.loading div:nth-of-type(1) {
+  -webkit-animation:flash 0.8s -0.2s ease-in-out infinite;
+  animation:flash 0.8s -0.2s ease-in-out infinite;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  50% { opacity: 0.5 }
+  100% { opacity: 1.0 }
+}
+@-webkit-keyframes flash {
+  0% { opacity: 0; }
+  50% { opacity: 0.5 }
+  100% { opacity: 1.0 }
+}
+
+.post-view {
+	height: 100%;
+	width: 50%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding-top: -600px;
+	background-color: rgb(246, 246, 239);
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+	border: 0;
+}

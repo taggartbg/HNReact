@@ -1,19 +1,49 @@
 /** @jsx React.DOM */
 
-var collection = require('../collection');
-
-var callback = function(err, res) {
-	console.log("ERROR: ", err);
-	console.log("POSTS: ", res)
-};
-
-collection.getPosts(42, callback);
+//Views
+var ListView = require('./listView').ListView;
+var PostView = require('./postView').PostView;
 
 var Layout = React.createClass({
+
+	getInitialState: function() {
+		return {
+			commentsURL: '',
+			contentURL: ''
+		}
+	},
+
+	handleSelectPost: function(commentsURL, contentURL) {
+		this.setState({
+			commentsURL: commentsURL,
+			contentURL: contentURL
+		});
+	},
+
 	render: function() {
 		return (
-			<div>TEST</div>
+			<div>
+				<Header url={this.state.contentURL} />
+				<ListView handleSelectPost={this.handleSelectPost} />
+				<PostView url={this.state.commentsURL} />
+			</div>
 		);
+	}
+});
+
+var Header = React.createClass({
+	render: function() {
+		var humanReadableUrl = this.props.url ? this.props.url.substr(0,37) + '...' : '';
+		return (
+			<div className="header">
+				HNReact
+				{
+					(this.props.url)
+					? <span className="link"><a href={this.props.url} target="_blank">{humanReadableUrl}</a></span>
+					: ''
+				}
+			</div>
+		)
 	}
 });
 

@@ -4,6 +4,7 @@ var browserify = require('browserify-middleware');
 var express = require('express');
 var fs = require('fs');
 var http = require('http');
+var https = require('https');
 
 
 /**
@@ -137,6 +138,34 @@ var SampleApp = function() {
             }
 
             http.get(url, callback);
+        };
+
+        self.routes['/Comments.html'] = function(req, res) {
+            var _res = res;
+
+            var callback = function(res) {
+              var responseString = ''
+              res.on('data', function (chunk) {
+                responseString += chunk;
+              });
+
+              res.on('end', function () {
+                _res.setHeader('Content-Type', 'text/html');
+
+                var delimiter = '<table border=0>';
+                var retVal = responseString.split(delimiter)[3];
+                retVal = '<table>' + retVal + '</table>';
+
+                _res.send(200,responseString);
+              });
+
+              res.on('error', function(err) {
+                console.log("ERROR: ", err);
+                _res.send(400, err);
+              });
+            };
+
+            https.get(req.query.url, callback);
         };
     };
 
