@@ -14,3 +14,5 @@ High-level TODO:
 * Support login, commenting, upvoting
 * Focus on list or post view based on mouse hover or finger swipe
 * Move JSX transforming to a task runner (also support dev/prod tasks)
+* Add routing
+* Support filtering / sorting
