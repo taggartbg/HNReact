@@ -1,7 +1,8 @@
 #!/bin/env node
-//  OpenShift sample Node application
+
+var browserify = require('browserify-middleware');
 var express = require('express');
-var fs      = require('fs');
+var fs = require('fs');
 
 
 /**
@@ -121,7 +122,6 @@ var SampleApp = function() {
         }
     };
 
-
     /**
      *  Initializes the sample application.
      */
@@ -139,6 +139,11 @@ var SampleApp = function() {
      *  Start the server (starts up the sample application).
      */
     self.start = function() {
+        //Static Directory
+        self.app.use('/public', express.static(__dirname + '/public'));
+
+        self.app.get('/app.js', browserify(__dirname + '/public/js/main.js'))
+
         //  Start the app on the specific interface (and port).
         self.app.listen(self.port, self.ipaddress, function() {
             console.log('%s: Node server started on %s:%d ...',

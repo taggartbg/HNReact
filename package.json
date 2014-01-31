@@ -28,7 +28,8 @@
   },
 
   "dependencies": {
-    "express": "~3.4.4"
+    "express": "~3.4.4",
+    "browserify-middleware": ">=2.0.0"
   },
   "devDependencies": {},
   "bundleDependencies": [],
