@@ -1,13 +1,13 @@
 /** @jsx React.DOM */
 
-var collection = require('../collection');
+var collection = require('./collection');
 
 var callback = function(err, res) {
 	console.log("ERROR: ", err);
 	console.log("POSTS: ", res)
 };
 
-collection.getPosts(42, callback);
+collection.getPosts(30, callback);
 
 var Layout = React.createClass({displayName: 'Layout',
 	render: function() {

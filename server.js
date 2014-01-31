@@ -3,6 +3,7 @@
 var browserify = require('browserify-middleware');
 var express = require('express');
 var fs = require('fs');
+var http = require('http');
 
 
 /**
@@ -105,6 +106,38 @@ var SampleApp = function() {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache_get('index.html') );
         };
+
+        self.routes['/HNify.json'] = function(req, res) {
+            var _res = res;
+
+            var callback = function(res) {
+              var responseString = ''
+              res.on('data', function (chunk) {
+                responseString += chunk;
+              });
+
+              res.on('end', function () {
+                var retVal = JSON.parse(responseString);
+                retVal = retVal.stories;
+
+                _res.setHeader('Content-Type', 'application/json');
+                _res.send(200,retVal);
+              });
+
+              res.on('error', function(err) {
+                console.log("ERROR: ", err);
+                _res.send(400, err);
+              });
+            };
+
+            if(req.query.limit) {
+                var url = 'http://hnify.herokuapp.com/get/top?limit=' + req.query.limit; 
+            } else {
+                var url = 'http://hnify.herokuapp.com/get/top';
+            }
+
+            http.get(url, callback);
+        };
     };
 
 
@@ -115,6 +148,8 @@ var SampleApp = function() {
     self.initializeServer = function() {
         self.createRoutes();
         self.app = express.createServer();
+
+        self.app.use(express.bodyParser());
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
