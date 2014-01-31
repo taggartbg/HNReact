@@ -3,9 +3,6 @@
 //Models & Collections
 var collection = require('../collection');
 
-//Views
-var LoadingIndicator = require('./loading').LoadingIndicator;
-
 var ListView = React.createClass({displayName: 'ListView',
 	getInitialState: function() {
 		return {
@@ -29,8 +26,10 @@ var ListView = React.createClass({displayName: 'ListView',
 		var _this = this;
 
 		$(node).scroll(function() {
-			var limit = collection.getLimit();
-    	var loadPoint = ((110 * limit) - $(window).height());
+    	console.log($(node).scrollTop());
+
+    	var limit = collection.getLimit();
+    	var loadPoint = ((125 * limit) - $(window).height());
 
     	var callback = function(err, res) {
   			if(!err) {
@@ -117,6 +116,19 @@ var ListItem = React.createClass({displayName: 'ListItem',
 				React.DOM.span( {className:"posted"}, 
 					" Posted ", this.props.post.published_time, " by ", React.DOM.a( {target:"_blank", href:this.props.post.submitter_profile}, this.props.post.submitter)
 				)
+			)
+		)
+	}
+});
+
+var LoadingIndicator = React.createClass({displayName: 'LoadingIndicator',
+	render: function() {
+		return (
+			React.DOM.div( {className:"loading"}, 
+				React.DOM.div(null),
+				React.DOM.div(null),
+				React.DOM.div(null),
+				React.DOM.div(null)
 			)
 		)
 	}

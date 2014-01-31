@@ -3,9 +3,6 @@
 //Models & Collections
 var collection = require('../collection');
 
-//Views
-var LoadingIndicator = require('./loading').LoadingIndicator;
-
 var ListView = React.createClass({displayName: 'ListView',
 	getInitialState: function() {
 		return {
@@ -29,7 +26,9 @@ var ListView = React.createClass({displayName: 'ListView',
 		var _this = this;
 
 		$(node).scroll(function() {
-			var limit = collection.getLimit();
+    	console.log($(node).scrollTop());
+
+    	var limit = collection.getLimit();
     	var loadPoint = ((110 * limit) - $(window).height());
 
     	var callback = function(err, res) {

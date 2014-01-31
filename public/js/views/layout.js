@@ -33,7 +33,7 @@ var Layout = React.createClass({displayName: 'Layout',
 
 var Header = React.createClass({displayName: 'Header',
 	render: function() {
-		var humanReadableUrl = this.props.url ? this.props.url.substr(0,37) + '...' : '';
+		var humanReadableUrl = this.props.url ? this.props.url.substr(0,27) + '...' : '';
 		return (
 			React.DOM.div( {className:"header"}, 
 				" HNReact ",

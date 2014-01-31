@@ -19,7 +19,6 @@
 .header .link {
 	font-size:1.75em;
 	float: right;
-
 }
 
 .list-view {
@@ -96,6 +95,23 @@ body {
   background: #222;
 }
 
+.post-view {
+	height: 100%;
+	width: 50%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	padding-top: -600px;
+	background-color: rgb(246, 246, 239);
+}
+
+iframe {
+	height: 100%;
+	width: 100%;
+	border: 0;
+}
+
+/*http://codepen.io/filipekiss/pen/LrCFe*/
 .loading {
   text-align: center;
   width: 100px;
@@ -138,20 +154,4 @@ body {
   0% { opacity: 0; }
   50% { opacity: 0.5 }
   100% { opacity: 1.0 }
-}
-
-.post-view {
-	height: 100%;
-	width: 50%;
-	position: fixed;
-	top: 0;
-	right: 0;
-	padding-top: -600px;
-	background-color: rgb(246, 246, 239);
-}
-
-iframe {
-	height: 100%;
-	width: 100%;
-	border: 0;
 }
