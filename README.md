@@ -1,8 +1,16 @@
+Play with it: http://hnreact-taggartbg.rhcloud.com/
+
 Author: Taggart Bowen-Gaddy
+
 Description: Hacker News Reader built with React, Backbone, and Bootstrap.  Deployed on OpenShift with Node/Express.
 
 HN API via HNify: https://github.com/karan/HNify
 
-The OpenShift `nodejs` cartridge documentation can be found at:
+High-level TODO:
 
-https://github.com/openshift/origin-server/tree/master/cartridges/openshift-origin-cartridge-nodejs/README.md
+[] New API that supports comments & redesign the post view
+[] Responsive Design
+[] Preprocess with Sass
+[] Support login, commenting, upvoting
+[] Focus on list or post view based on mouse hover or finger swipe
+[] Move JSX transforming to a task runner (also support dev/prod tasks)

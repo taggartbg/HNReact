@@ -30,7 +30,7 @@ var ListView = React.createClass({
 
 		$(node).scroll(function() {
 			var limit = collection.getLimit();
-    	var loadPoint = ((110 * limit) - $(window).height());
+    	var loadPoint = ((110 * limit+1) - $(window).height());
 
     	var callback = function(err, res) {
   			if(!err) {
