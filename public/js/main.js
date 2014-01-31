@@ -1,5 +1,5 @@
-$(document).ready(function() {
-	var test = require('./views/test');
-
-	console.log("Main: ", test.test);
+$( document ).ready(function() {
+	var Layout = require('./views/layout');
+	
+	Layout.renderApp($('#container')[0]);
 });

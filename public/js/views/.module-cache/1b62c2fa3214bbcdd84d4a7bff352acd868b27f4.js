@@ -1,10 +1,11 @@
 /** @jsx React.DOM */
 
 console.log("Test.jsx");
+console.log($('.container'));
 
 React.renderComponent(
   React.DOM.h1(null, "Hello, world!"),
-  document.getElementById('example')
+  $('.container')
 );
 
 exports.test = "test";
