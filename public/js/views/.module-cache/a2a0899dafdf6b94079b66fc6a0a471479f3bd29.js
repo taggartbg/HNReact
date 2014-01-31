@@ -8,6 +8,7 @@ var LoadingIndicator = require('./loading').LoadingIndicator;
 
 //Addons
 var ClassSet = React.addons.classSet;
+console.log("CS: ", new ClassSet);
 
 var ListView = React.createClass({displayName: 'ListView',
 	getInitialState: function() {
@@ -69,7 +70,7 @@ var ListView = React.createClass({displayName: 'ListView',
 				
 					_.map(this.state.collection, function(model) {
 						return (
-							ListItem( {post:model, handleSelectPost:_this.handleSelectPost, activeItem:_this.state.activeItem} )
+							ListItem( {post:model, handleSelectPost:_this.props.handleSelectPost, activeItem:_this.state.activeItem} )
 						)
 					}),
 				
@@ -93,10 +94,12 @@ var ListItem = React.createClass({displayName: 'ListItem',
 
 	render: function() {
 
-		var itemClasses = ClassSet({
+		itemClasses = new ClassSet({
 			'list-item': true,
 			'active': (this.props.activeItem === this.props.post.rank)
 		});
+
+		console.log(itemClasses)
 
 		return (
 			React.DOM.div( {className:itemClasses, name:this.props.post.rank, onClick:this.handleClick}, 

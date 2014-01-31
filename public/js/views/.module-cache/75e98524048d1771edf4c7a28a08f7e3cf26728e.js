@@ -69,7 +69,7 @@ var ListView = React.createClass({displayName: 'ListView',
 				
 					_.map(this.state.collection, function(model) {
 						return (
-							ListItem( {post:model, handleSelectPost:_this.handleSelectPost, activeItem:_this.state.activeItem} )
+							ListItem( {post:model, handleSelectPost:_this.props.handleSelectPost, isActive:_this.state.activeItem === model.rank} )
 						)
 					}),
 				
@@ -92,10 +92,10 @@ var ListItem = React.createClass({displayName: 'ListItem',
 	},
 
 	render: function() {
-
-		var itemClasses = ClassSet({
+		
+		var itemClasses = new ClassSet({
 			'list-item': true,
-			'active': (this.props.activeItem === this.props.post.rank)
+			'active': this.props.isActive
 		});
 
 		return (

@@ -6,6 +6,9 @@ var collection = require('../collection');
 //Views
 var LoadingIndicator = require('./loading').LoadingIndicator;
 
+//Addons
+var ClassSet = React.addons.classSet;
+
 var ListView = React.createClass({
 	getInitialState: function() {
 		return {
@@ -51,6 +54,13 @@ var ListView = React.createClass({
   	});
 	},
 
+	handleSelectPost: function(commentsUrl, contentUrl, rank) {
+		this.props.handleSelectPost(commentsUrl, contentUrl);
+		this.setState({
+			activeItem: rank
+		})
+	},
+
 	render: function() {
 		var _this = this;
 
@@ -59,7 +69,7 @@ var ListView = React.createClass({
 				{
 					_.map(this.state.collection, function(model) {
 						return (
-							<ListItem post={model} handleSelectPost={_this.props.handleSelectPost} />
+							<ListItem post={model} handleSelectPost={_this.handleSelectPost} activeItem={_this.state.activeItem} />
 						)
 					})
 				}
@@ -77,13 +87,19 @@ var ListView = React.createClass({
 
 var ListItem = React.createClass({
 
-	handleClick: function() {
-		this.props.handleSelectPost(this.props.post.comments_link, this.props.post.link);
+	handleClick: function(evt) {
+		this.props.handleSelectPost(this.props.post.comments_link, this.props.post.link, this.props.post.rank);
 	},
 
 	render: function() {
+
+		var itemClasses = ClassSet({
+			'list-item': true,
+			'active': (this.props.activeItem === this.props.post.rank)
+		});
+
 		return (
-			<div className="list-item" onClick={this.handleClick}>
+			<div className={itemClasses} name={this.props.post.rank} onClick={this.handleClick}>
 				<div className="score">
 					<div>
 						<span className="glyphicon glyphicon-chevron-up"></span>

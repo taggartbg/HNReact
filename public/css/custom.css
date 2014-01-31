@@ -48,6 +48,10 @@
 	opacity: .9;
 }
 
+.list-item.active {
+	background-color: white;
+}
+
 .list-item .score {
 	float: left;
 	height: 100%;

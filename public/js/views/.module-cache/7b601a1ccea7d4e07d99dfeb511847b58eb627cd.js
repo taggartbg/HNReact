@@ -55,10 +55,7 @@ var ListView = React.createClass({displayName: 'ListView',
 	},
 
 	handleSelectPost: function(commentsUrl, contentUrl, rank) {
-		this.props.handleSelectPost(commentsUrl, contentUrl);
-		this.setState({
-			activeItem: rank
-		})
+		this.props.handleS
 	},
 
 	render: function() {
@@ -69,7 +66,7 @@ var ListView = React.createClass({displayName: 'ListView',
 				
 					_.map(this.state.collection, function(model) {
 						return (
-							ListItem( {post:model, handleSelectPost:_this.handleSelectPost, activeItem:_this.state.activeItem} )
+							ListItem( {post:model, handleSelectPost:_this.props.handleSelectPost} )
 						)
 					}),
 				
@@ -92,14 +89,12 @@ var ListItem = React.createClass({displayName: 'ListItem',
 	},
 
 	render: function() {
-
-		var itemClasses = ClassSet({
+		var itemClasses = new ClassSet({
 			'list-item': true,
-			'active': (this.props.activeItem === this.props.post.rank)
-		});
-
+			'active': this.props.isActive
+		})
 		return (
-			React.DOM.div( {className:itemClasses, name:this.props.post.rank, onClick:this.handleClick}, 
+			React.DOM.div( {className:"list-item", name:this.props.post.rank, onClick:this.handleClick}, 
 				React.DOM.div( {className:"score"}, 
 					React.DOM.div(null, 
 						React.DOM.span( {className:"glyphicon glyphicon-chevron-up"})

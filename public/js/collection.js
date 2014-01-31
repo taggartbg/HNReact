@@ -1,4 +1,4 @@
-var post = new Backbone.Model
+var post = new Backbone.Model;
 
 var posts = new Backbone.Collection({
 	model: post
